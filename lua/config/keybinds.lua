@@ -10,3 +10,4 @@ vim.keymap.set('n', '<C-j>', '<C-w>j') -- Ctrl+j moves down
 vim.keymap.set('n', '<C-k>', '<C-w>k') -- Ctrl+k moves up
 vim.keymap.set('n', '<C-l>', '<C-w>l') -- Ctrl+l moves right
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})

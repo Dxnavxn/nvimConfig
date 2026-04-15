@@ -41,7 +41,7 @@ return {
 
       -- Toggle the terminal manually (VS Code style Ctrl + `)
       map({ "n", "t" }, "<C-t>", function()
-        require("better-term").toggle()
+        require("betterTerm").open()
       end, { desc = "Toggle Terminal" })
     end,
   },
