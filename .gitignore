@@ -1,0 +1,14 @@
+# --- Neovim Temporary Files ---
+*.swp
+*.swo
+
+undo/
+backups/
+sessions/
+.netrwhist
+
+# --- Logs ---
+*.log
+
+# --- OS Specific ---
+.DS_Store
