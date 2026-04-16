@@ -11,6 +11,27 @@ vim.keymap.set('n', '<C-j>', '<C-w>j') -- (<C-j> | Move down)
 vim.keymap.set('n', '<C-k>', '<C-w>k') -- (<C-k> | Move up)
 vim.keymap.set('n', '<C-l>', '<C-w>l') -- (<C-l> | Move right)
 
+-- Window management
+vim.keymap.set('n', '<C-w>r', '<C-w>r') -- Rotate windows downwards/rightwards
+vim.keymap.set('n', '<C-w>R', '<C-w>R') -- Rotate windows upwards/leftwards
+vim.keymap.set('n', '<C-w>x', '<C-w>x') -- Exchange current window with next
+vim.keymap.set('n', '<leader>wh', '<C-w>H') -- Move window to far left
+vim.keymap.set('n', '<leader>wj', '<C-w>J') -- Move window to bottom
+vim.keymap.set('n', '<leader>wk', '<C-w>K') -- Move window to top
+vim.keymap.set('n', '<leader>wl', '<C-w>L') -- Move window to far right
+
+-- Tab management (for Barbar tabpages)
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = 'New tab' })
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { desc = 'Close tab' })
+vim.keymap.set('n', '<leader>th', ':tabprevious<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<leader>tl', ':tabnext<CR>', { desc = 'Next tab' })
+vim.keymap.set('n', '<leader>t1', ':tabn 1<CR>', { desc = 'Go to tab 1' })
+vim.keymap.set('n', '<leader>t2', ':tabn 2<CR>', { desc = 'Go to tab 2' })
+vim.keymap.set('n', '<leader>t3', ':tabn 3<CR>', { desc = 'Go to tab 3' })
+
+-- Context plugin
+vim.keymap.set('n', '<leader>cx', ':TSContextToggle<CR>', { desc = 'Toggle treesitter context display' })
+
 -- Barbar bufferline navigation
 vim.keymap.set('n', '<leader>bn', '<cmd>BufferNext<CR>', { desc = 'Barbar: next buffer' }) -- (<leader>bn | Next buffer)
 vim.keymap.set('n', '<leader>bp', '<cmd>BufferPrevious<CR>', { desc = 'Barbar: previous buffer' }) -- (<leader>bp | Previous buffer)

@@ -5,6 +5,7 @@ return {
   },
   config = function()
     require("barbar").setup({
+      tabpages = true,  -- Show tabpages instead of buffers globally
     })
 
     -- Set highlights to match midnight ice theme
