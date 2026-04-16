@@ -7,19 +7,18 @@ return {
     config = function()
       local function forceDwmColors()
         local colors = {
-          bg            = "#141414", -- Charcoal Background
-          fg            = "#FFFFFF", -- Regular Text (Muted Steel Grey)
-          uiAccent      = "#005FFF", -- Deep UI Blue
-          lineHigh      = "#1c1c1c",
+          bg            = "#141414", -- Background
+          fg            = "#F2F2F2", -- Regular Text 
+          uiAccent      = "#005FFF", 
+          lineHigh      = "#1c1c1c", -- Highlight
           
-          -- Deep Midnight Spectrum (camelCase)
-          syntaxMain    = "#1C39BB", -- Keywords (Deep Cobalt)
-          syntaxVar     = "#FFFFFF", -- Variables (Pure White)
-          syntaxType    = "#4682B4", -- Types (Steel Blue)
-          syntaxFunc    = "#004B93", -- Functions (Midnight Navy)
-          syntaxStr     = "#A5D6FF", -- Strings (Soft Ice Blue - No Gold)
-          syntaxConst   = "#5F72A5", -- Booleans/Numbers (Dusky Blue)
-          syntaxSym     = "#4A5568", -- Symbols (Dark Slate)
+          syntaxMain    = "#1C39BB", -- Keywords
+          syntaxVar     = "#FFFFFF", -- Variables
+          syntaxType    = "#4682B4", -- Types
+          syntaxFunc    = "#004B93", -- Functions
+          syntaxStr     = "#A5D6FF", -- Strings
+          syntaxConst   = "#5F72A5", -- Booleans/Numbers
+          syntaxSym     = "#4A5568", -- Symbols
         }
 
         local hl = vim.api.nvim_set_hl
@@ -31,69 +30,49 @@ return {
 
         -- 2. Directory & Explorer
         hl(0, "Directory", { fg = colors.uiAccent, bold = true, force = true })
-        hl(0, "NeoTreeDirectoryName", { fg = colors.uiAccent, force = true })
+        hl(0, "NeoTreeDirectoryName", { fg = "#FFFFFF", force = true }) 
         hl(0, "NeoTreeDirectoryIcon", { fg = colors.uiAccent, force = true })
         hl(0, "NeoTreeRootName", { fg = colors.uiAccent, bold = true, force = true })
+        hl(0, "NeoTreeGitUntracked", { fg = "#94fd00", italic = true, force = true })
+        hl(0, "NeoTreeGitAdded", { fg = "#FFFFFF", force = true })
+        hl(0, "NeoTreeGitModified", { fg = "#2765f6", force = true })
 
-        -- 3. Keywords (syntaxMain)
-        local toMain = {
-          "Keyword", "Statement", "PreProc", "Define", "Include",
-          "@keyword", "@storageclass", "@module", "@variable.builtin"
-        }
-        for _, group in ipairs(toMain) do
-          hl(0, group, { fg = colors.syntaxMain, bold = true, force = true })
-        end
+        -- Keywords
+        local toMain = { "Keyword", "Statement", "PreProc", "Define", "Include", "@keyword", "@storageclass", "@module", "@variable.builtin" }
+        for _, group in ipairs(toMain) do hl(0, group, { fg = colors.syntaxMain, bold = true, force = true }) end
 
-        -- 4. Variables (syntaxVar)
-        local toVar = {
-          "Identifier", "Variable", "Property", "Parameter", "Member",
-          "@variable", "@property", "@parameter", "@member", "@field",
-          "@variable.member"
-        }
-        for _, group in ipairs(toVar) do
-          hl(0, group, { fg = colors.syntaxVar, force = true })
-        end
+        -- Variables
+        local toVar = { "Identifier", "Variable", "Property", "Parameter", "Member", "@variable", "@property", "@parameter", "@member", "@field", "@variable.member" }
+        for _, group in ipairs(toVar) do hl(0, group, { fg = colors.syntaxVar, force = true }) end
 
-        -- 5. Types (syntaxType)
+        -- Types
         hl(0, "Type", { fg = colors.syntaxType, bold = true, force = true })
         hl(0, "@type", { fg = colors.syntaxType, bold = true, force = true })
 
-        -- 6. Functions (syntaxFunc)
-        local toFunc = {
-          "Function", "@function", "@method", "@function.builtin", "@constructor"
-        }
-        for _, group in ipairs(toFunc) do
-          hl(0, group, { fg = colors.syntaxFunc, bold = true, force = true })
-        end
+        -- Functions
+        local toFunc = { "Function", "@function", "@method", "@function.builtin", "@constructor" }
+        for _, group in ipairs(toFunc) do hl(0, group, { fg = colors.syntaxFunc, bold = true, force = true }) end
 
-        -- 7. Booleans & Numbers (syntaxConst)
-        local toConst = {
-          "Boolean", "Number", "Constant", "Float",
-          "@boolean", "@number", "@constant", "@float"
-        }
-        for _, group in ipairs(toConst) do
-          hl(0, group, { fg = colors.syntaxConst, bold = true, force = true })
-        end
+        -- Booleans & Numbers
+        local toConst = { "Boolean", "Number", "Constant", "Float", "@boolean", "@number", "@constant", "@float" }
+        for _, group in ipairs(toConst) do hl(0, group, { fg = colors.syntaxConst, bold = true, force = true }) end
 
-        -- 8. Symbols & Operators (syntaxSym)
-        local toSym = {
-          "Delimiter", "Operator", "@punctuation.bracket", "@punctuation.delimiter", "@operator"
-        }
-        for _, group in ipairs(toSym) do
-          hl(0, group, { fg = colors.syntaxSym, force = true })
-        end
+        -- Symbols
+        local toSym = { "Delimiter", "Operator", "@punctuation.bracket", "@punctuation.delimiter", "@operator" }
+        for _, group in ipairs(toSym) do hl(0, group, { fg = colors.syntaxSym, force = true }) end
 
-        -- 9. Strings (syntaxStr) & Comments
+        -- Strings & Comments
         hl(0, "String", { fg = colors.syntaxStr, force = true })
         hl(0, "@string", { fg = colors.syntaxStr, force = true })
         hl(0, "Comment", { fg = "#333A45", italic = true, force = true })
 
-        -- 10. Cursorline & Gutter
+        -- Cursorline & Gutter
         hl(0, "CursorLine", { bg = colors.lineHigh, force = true })
         hl(0, "CursorLineNr", { fg = colors.uiAccent, bg = colors.lineHigh, bold = true, force = true })
-        hl(0, "LineNr", { fg = "#2a2a2a", bg = colors.bg, force = true })
-
+        hl(0, "LineNr", { fg = colors.fg, bg = colors.bg, force = true })
         vim.opt.cursorline = true
+
+
       end
 
       forceDwmColors()
@@ -102,7 +81,7 @@ return {
       vim.g.colors_name = "midnight_ice_dwm"
     end,
   },
-  {
+  { -- luaLine
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -111,7 +90,7 @@ return {
         bg      = '#141414',
         text    = '#EEEEEE',
         gutter  = '#1c1c1c',
-        visual  = '#A5D6FF', -- Matches the new Ice Blue string color
+        visual  = '#A5D6FF',
       }
       require('lualine').setup({
         options = {
@@ -126,15 +105,22 @@ return {
           },
           globalstatus = true,
           component_separators = '',
-          section_separators = '',
+          section_separators = { left = '', right = '' }, 
         },
         sections = {
-          lualine_a = { 'mode' },
+          lualine_a = { 
+            { 'mode', separator = { right = '' }, padding = { left = 1, right = 0 } } 
+          },
           lualine_b = { 'branch', 'diagnostics' },
-          lualine_c = { { 'filename', color = { fg = lualineColors.text, gui = 'bold' } } },
+          lualine_c = { 
+            { 'filename', color = { fg = lualineColors.text, gui = 'bold' } },
+            { function() return "%=" end } 
+          },
           lualine_x = { 'filetype' },
           lualine_y = { 'progress' },
-          lualine_z = { 'location' }
+          lualine_z = { 
+            { 'location', separator = { left = '' }, padding = { left = 0, right = 1 } } 
+          }
         }
       })
     end
