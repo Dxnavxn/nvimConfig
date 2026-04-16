@@ -15,10 +15,10 @@ return {
 	opts = {
 		formatters_by_ft = {
 			-- HTML/CSS/JS/JSON 
-			html = { "prettier" },
-			css = { "prettier" },
-			javascript = { "prettier" },
-			json = { "prettier" },
+			-- html = { "prettier" },
+			-- css = { "prettier" },
+			-- javascript = { "prettier" },
+			-- json = { "prettier" },
 
 			-- Python 
 			python = { "black" },
