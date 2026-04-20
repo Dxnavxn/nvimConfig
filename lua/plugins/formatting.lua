@@ -21,7 +21,7 @@ return {
 			-- json = { "prettier" },
 
 			-- Python 
-			python = { "black" },
+			--python = { "black" },
 
 			-- Lua 
 			-- lua = { "stylua" },
